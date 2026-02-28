@@ -7,7 +7,7 @@ FontProvider::FontProvider(const QFont& font)
     font_.setStyleStrategy(QFont::NoAntialias);
 
     QFontMetrics font_metrics(font);
-    font_size_.setWidth(font_metrics.width("W"));
+    font_size_.setWidth(font_metrics.horizontalAdvance("W"));
     font_size_.setHeight(font_metrics.height());
 }
 

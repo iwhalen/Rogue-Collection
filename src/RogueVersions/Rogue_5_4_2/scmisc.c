@@ -31,7 +31,7 @@ extern char	encstr[], statlist[];
 
 char *lockfile = "/tmp/.fredlock";
 
-char prbuf[MAXSTR];			/* buffer for sprintfs */
+extern char prbuf[];			/* buffer for sprintfs */
 
 MONST	monsterlist[] = {
 	{ "aquator" }, { "bat" }, { "centaur" }, { "dragon" }, { "emu" },

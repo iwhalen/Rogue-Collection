@@ -93,12 +93,12 @@ namespace
 
 const char* get_text(text_id id)
 {
-    bool unix = game->options.unix_output();
+    bool is_unix = game->options.unix_output();
     bool terse = game->options.terse();
     Text t = s_text_library[id];
 
     const char* m;
-    if (unix) {
+    if (is_unix) {
         m = terse && t.unix_terse ? t.unix_terse : t.unix_message;
     }
     else {

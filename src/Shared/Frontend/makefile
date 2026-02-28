@@ -4,7 +4,7 @@ SRCROOT  = ../..
 
 INCLUDES = -I$(SRCROOT)/Shared -I$(SRCROOT)/MyCurses
 DEFINES  = #-DROGOMATIC_PROTOCOL_DEBUGGING
-CFLAGS   = -Wall -Werror -pedantic -fPIC
+CFLAGS   = -std=gnu++11 -Wall -Wno-error -pedantic -fPIC
 
 TARGET   = lib-shared-frontend.a
 SOURCES  = $(shell echo *.cpp)

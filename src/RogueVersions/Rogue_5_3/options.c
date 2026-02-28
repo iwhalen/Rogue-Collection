@@ -27,7 +27,7 @@ struct optstruct {
 
 typedef struct optstruct	OPTION;
 
-char	*inv_t_name[];
+extern char	*inv_t_name[];
 
 int	put_bool(), get_bool(), put_str(), put_inv_t(), get_inv_t(),
 	get_str();

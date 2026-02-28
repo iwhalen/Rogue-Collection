@@ -3,7 +3,7 @@ QT += qml quick widgets sql multimedia
 linux {
     TARGET = retro-rogue-collection
     QMAKE_LFLAGS += -fno-pic -no-pie
-    QMAKE_CXXFLAGS += -Wall -Werror -pedantic
+    QMAKE_CXXFLAGS += -std=gnu++11 -Wall -Wno-error -pedantic
 }
 win32 {
     TARGET = RetroRogueCollection

@@ -8,7 +8,7 @@ static {
 }
 
 linux {
-    QMAKE_CXXFLAGS += -Wall -Werror -pedantic
+    QMAKE_CXXFLAGS += -std=gnu++11 -Wall -Wno-error -pedantic
 }
 
 DESTDIR = $$OUT_PWD

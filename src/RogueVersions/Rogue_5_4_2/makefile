@@ -4,7 +4,7 @@ SRCROOT  = ../..
 
 INCLUDES = -I$(SRCROOT)/Shared -I$(SRCROOT)/MyCurses
 DEFINES  = -DROGUE_COLLECTION -DUSE_PC_STYLE -DSCOREFILE=\"rogue54.scr\" -DALLSCORES -DMASTER
-CFLAGS   = -w -shared -fPIC -fvisibility=hidden -fvisibility-inlines-hidden -s
+CFLAGS   = -std=gnu89 -w -shared -fPIC -fvisibility=hidden -fvisibility-inlines-hidden -s
 
 TARGET   = lib-rogue-5-4-2.so
 SOURCES  = $(shell echo *.c)

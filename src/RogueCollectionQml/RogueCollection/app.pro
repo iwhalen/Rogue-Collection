@@ -2,7 +2,7 @@ QT += widgets qml quick multimedia
 linux {
     TARGET = rogue-collection
     QMAKE_LFLAGS += -fno-pic -no-pie
-    QMAKE_CXXFLAGS += -Wall -Werror -pedantic
+    QMAKE_CXXFLAGS += -std=gnu++11 -Wall -Wno-error -pedantic
 }
 win32 {
     TARGET = RogueCollection

@@ -4,7 +4,7 @@ SRCROOT  = ..
 
 INCLUDES = -I$(SRCROOT)/Shared -I$(SRCROOT)/MyCurses
 DEFINES  = -DROGUE_COLLECTION #-DROGOMATIC_PROTOCOL_DEBUGGING
-CFLAGS   = -w -shared -fPIC -fvisibility=hidden -fvisibility-inlines-hidden -s
+CFLAGS   = -std=gnu99 -w -shared -fPIC -fvisibility=hidden -fvisibility-inlines-hidden -s
 
 TARGET   = lib-rogomatic-player.so
 SOURCES  = $(shell echo *.c)
