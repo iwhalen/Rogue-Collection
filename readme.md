@@ -17,6 +17,14 @@
 > - `RogueVersions/Rogue_5_4_2/scmisc.c` — Made `prbuf` an `extern` declaration
 > - `Shared/Frontend/utility.h` and `environment.cpp` — Added missing `#include <cstdint>`
 > - `RogueCollectionQml/RoguePlugin/font_provider.cpp` — Replaced deprecated `QFontMetrics::width()` with `horizontalAdvance()`
+>
+>
+> To get things started, run:
+>
+> ``` bash
+> make build
+> make run
+> ```
 
 Retro Rogue Collection
 ======================
