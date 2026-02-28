@@ -79,7 +79,13 @@ int RunMain(int argc, char** argv)
                     game.reset(new GameConfig(GetGameConfig(i)));
                 }
                 else {
-                    replay_path = value;
+                    int i = GetGameIndex(value);
+                    if (i >= 0) {
+                        game.reset(new GameConfig(GetGameConfig(i)));
+                    }
+                    else {
+                        replay_path = value;
+                    }
                 }
             }
         }
@@ -94,7 +100,7 @@ int RunMain(int argc, char** argv)
             replay_path = selection.second;
         }
 
-        if (game && HasTitleScreen(*game)) {
+        if (game && HasTitleScreen(*game) && !args.pipe_io) {
             std::string value;
             if (!current_env->Get("show_title_screen", &value) || value != "false") {
                 TitleScreen title(window.get(), renderer.get(), current_env.get());
@@ -106,14 +112,17 @@ int RunMain(int argc, char** argv)
         }
 
         if (game) {
-            if (args.rogomatic && !game->supports_rogomatic) {
+            bool use_pipes = args.rogomatic || args.pipe_io;
+            if (use_pipes && !game->supports_rogomatic) {
                 DisplayMessage(
                     SDL_MESSAGEBOX_WARNING,
-                    "Rogomatic", "Rogomatic does not support " + game->name);
-                args.rogomatic &= game->supports_rogomatic;
+                    "Pipe I/O", "Pipe I/O does not support " + game->name);
+                args.rogomatic = false;
+                args.pipe_io = false;
+                use_pipes = false;
             }
 
-            if (args.rogomatic)
+            if (use_pipes)
             {
                 current_env->SetRogomaticValues();
             }
@@ -147,7 +156,7 @@ int RunMain(int argc, char** argv)
             rogue.detach();
 
             sdl_rogue->Run();
-            if (game && args.rogomatic)
+            if (game && (args.rogomatic || args.pipe_io))
             {
                 sdl_rogue->SaveGame(game->name + GetTimestamp() + ".sav", false);
             }

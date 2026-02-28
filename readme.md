@@ -1,25 +1,9 @@
 > [!Warning]
 > This is my fork of the excellent [Rogue Collection](https://github.com/mikeyk730/Rogue-Collection) project, modified to compile on Ubuntu 24.04 LTS with GCC 13.
 >
-> **Changes made to build on modern Linux (based on [issue #74](https://github.com/mikeyk730/Rogue-Collection/issues/74#issuecomment-3826068024)):**
+> Additionally, there are a bunch of changed made to enable the [Claude plays Rogue]() project. However, it will still work if you just want to play on Linux.
 >
-> **Makefile flag updates:**
-> - Added `-std=gnu++11` and replaced `-Werror` with `-Wno-error` in C++ makefiles (`MyCurses`, `Rogue_PC_Core`, `Rogue_PC_1_48`, `Shared/Frontend`) and QML `.pro` files (`import.pro`, `app.pro` for both frontends)
-> - Added `-std=gnu89` to C makefiles (`Rogue_3_6_3`, `Rogue_5_2_1`, `Rogue_5_3`, `Rogue_5_4_2`)
-> - Changed Rogomatic to `-std=gnu99` (uses C99-style for-loop declarations)
->
-> **Source fixes:**
-> - `MyCurses/curses.cpp` — Enlarged `chstr` buffer from 9 to 12 bytes to fix `sprintf` overflow warning
-> - `RogueVersions/Rogue_PC_Core/text.cpp` — Renamed variable `unix` → `is_unix` (conflicts with predefined Linux macro)
-> - `RogueVersions/Rogue_5_2_1/extern.c` — Made `release` an `extern` declaration to fix multiple-definition linker error
-> - `RogueVersions/Rogue_5_3/extern.c` — Made `prbuf` and `release` `extern` declarations
-> - `RogueVersions/Rogue_5_3/options.c` — Added `extern` to `inv_t_name` declaration
-> - `RogueVersions/Rogue_5_4_2/scmisc.c` — Made `prbuf` an `extern` declaration
-> - `Shared/Frontend/utility.h` and `environment.cpp` — Added missing `#include <cstdint>`
-> - `RogueCollectionQml/RoguePlugin/font_provider.cpp` — Replaced deprecated `QFontMetrics::width()` with `horizontalAdvance()`
->
->
-> To get things started, run:
+> To get going, run:
 >
 > ``` bash
 > make build

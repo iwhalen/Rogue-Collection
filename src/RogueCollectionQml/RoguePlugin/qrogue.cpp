@@ -52,7 +52,7 @@ QRogue::QRogue(QQuickItem *parent)
 
     std::string graphics;
     env_->Get("gfx", &graphics);
-    int frogue = args_.rogomatic ? args_.GetDescriptorFromRogue() : 0;
+    int frogue = (args_.rogomatic || args_.pipe_io) ? args_.GetDescriptorFromRogue() : 0;
     display_.reset(new QRogueDisplay(this, {80,25}, graphics, frogue));
 
     std::string value;
@@ -112,16 +112,19 @@ void QRogue::setGame(const QString &game)
 
 void QRogue::setGame(const GameConfig& game)
 {
-    if (args_.rogomatic)
+    bool use_pipes = args_.rogomatic || args_.pipe_io;
+    if (use_pipes)
     {
         if (!game.supports_rogomatic)
         {
-            DisplayMessage("Error", "Rogomatic", "Rogomatic doesn't support " + game.name);
+            DisplayMessage("Error", "Pipe I/O", "Pipe I/O doesn't support " + game.name);
             args_.rogomatic = false;
+            args_.pipe_io = false;
+            use_pipes = false;
         }
     }
 
-    if (args_.rogomatic)
+    if (use_pipes)
     {
         env_->SetRogomaticValues();
     }
@@ -139,7 +142,7 @@ void QRogue::setGame(const GameConfig& game)
     }
     game_env_->Set("seed", ss.str());
 
-    if (args_.rogomatic)
+    if (args_.rogomatic || args_.pipe_io)
     {
         input_.reset(new PipeInput(env_.get(), game_env_.get(), config_, args_.GetDescriptorToRogue()));
     }
@@ -153,7 +156,7 @@ void QRogue::setGame(const GameConfig& game)
 
 bool QRogue::showTitleScreen()
 {
-    if (args_.rogomatic)
+    if (args_.rogomatic || args_.pipe_io)
     {
         return false;
     }

@@ -45,9 +45,8 @@ SdlRogue::SdlRogue(SDL_Window* window, SDL_Renderer* renderer, std::shared_ptr<E
 
     SetGame(game);
 
-    if (args.rogomatic)
+    if (args.rogomatic || args.pipe_io)
     {
-        //todo:mdk turn into decorator that can be cancelled with ESC
         m_input.reset(new PipeInput(m_current_env.get(), m_game_env.get(), m_options, args.GetDescriptorToRogue()));
     }
     else
@@ -55,7 +54,7 @@ SdlRogue::SdlRogue(SDL_Window* window, SDL_Renderer* renderer, std::shared_ptr<E
         m_input.reset(new SdlInput(m_current_env.get(), m_game_env.get(), m_options));
     }
 
-    int frogue = args.rogomatic ? args.GetDescriptorFromRogue() : 0;
+    int frogue = (args.rogomatic || args.pipe_io) ? args.GetDescriptorFromRogue() : 0;
     std::unique_ptr<PipeOutput> pipe_output(frogue ? new PipeOutput(frogue) : nullptr);
     m_display.reset(
         new SdlDisplay(

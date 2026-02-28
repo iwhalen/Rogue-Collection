@@ -37,6 +37,9 @@ bool Args::LoadArg(const std::string& arg, const std::string& next)
     else if (arg == "--rogomatic-player") {
         rogomatic_player = true;
     }
+    else if (arg == "--pipe-io") {
+        pipe_io = true;
+    }
     else if (arg == "--trogue-fd") {
         trogue_fd = next;
         return true;

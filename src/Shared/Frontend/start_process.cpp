@@ -109,6 +109,11 @@ int StartProcess(int (*start)(int argc, char** argv), int argc, char** argv)
     Args args(argc, argv);
     Environment env(args);
 
+    if (args.pipe_io)
+    {
+        return start(argc, argv);
+    }
+
     if (args.rogomatic)
     {
         ArgBuilder wrapper(argc, argv);
