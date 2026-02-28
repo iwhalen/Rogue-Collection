@@ -3,7 +3,7 @@ SHELL    = /bin/sh
 SRCROOT  = ../..
 
 INCLUDES = -I$(SRCROOT)/Shared -I$(SRCROOT)/MyCurses -I$(SRCROOT)/RogueVersions/Rogue_PC_Core
-CFLAGS   = -Wall -Werror -pedantic -shared -fPIC -fvisibility=hidden -fvisibility-inlines-hidden -s
+CFLAGS   = -std=gnu++11 -Wall -Wno-error -pedantic -shared -fPIC -fvisibility=hidden -fvisibility-inlines-hidden -s
 
 TARGET   = lib-rogue-pc-1-48.so
 SOURCES  = $(shell echo *.cpp)

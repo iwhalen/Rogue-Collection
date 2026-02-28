@@ -3,7 +3,7 @@ SHELL    = /bin/sh
 SRCROOT  = ../..
 
 INCLUDES = -I$(SRCROOT)/Shared
-CFLAGS   = -Wall -Werror -pedantic -fPIC
+CFLAGS   = -std=gnu++11 -Wall -Wno-error -pedantic -fPIC
 
 TARGET   = lib-rogue-pc-core.a
 SOURCES  = $(shell echo *.cpp)

@@ -32,7 +32,7 @@ bool wizard = FALSE;			/* True if allows wizard commands */
 #endif
 
 unsigned char take;				/* Thing the rogue is taking */
-char prbuf[MAXSTR];			/* Buffer for sprintfs */
+extern char prbuf[MAXSTR];		/* Buffer for sprintfs */
 char runch;				/* Direction player is running */
 char *s_names[MAXSCROLLS];		/* Names of the scrolls */
 char *p_colors[MAXPOTIONS];		/* Colors of the potions */
@@ -61,7 +61,7 @@ char *a_names[MAXARMORS] = {		/* Names of armor types */
     "plate mail",
 };
 char *ws_made[MAXSTICKS];		/* What sticks are made of */
-char *release;				/* Release number of rogue */
+extern char *release;			/* Release number of rogue */
 char whoami[MAXSTR];			/* Name of player */
 char fruit[MAXSTR];			/* Favorite fruit */
 char huh[MAXSTR];			/* The last message printed */
