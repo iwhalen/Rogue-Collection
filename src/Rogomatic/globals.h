@@ -43,7 +43,7 @@ extern char *genocide;		/* List of monsters to genocide */
 extern char genocided[];	/* List of monsters genocided */
 extern char lastcmd[];		/* Copy of last command sent to Rogue */
 extern char lastname[];		/* Name of last potion/scroll/wand */
-stuff lasttype;
+extern stuff lasttype;
 extern char nextid;		/* Next object to identify */
 extern char ourkiller[];	/* What was listed on the tombstone */
 #ifndef ROGUE_COLLECTION
