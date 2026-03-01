@@ -1,7 +1,7 @@
 > [!Warning]
 > This is my fork of the excellent [Rogue Collection](https://github.com/mikeyk730/Rogue-Collection) project, modified to compile on Ubuntu 24.04 LTS with GCC 13.
 >
-> Additionally, there are a bunch of changed made to enable the [Claude plays Rogue]() project. However, it will still work if you just want to play on Linux.
+> Additionally, there are a bunch of changes made to enable the [Rogomatic for LLMs](https://github.com/iwhalen/rogomatic-llm) project. However, it will still work if you just want to play on Linux.
 >
 > To get going, run:
 >
