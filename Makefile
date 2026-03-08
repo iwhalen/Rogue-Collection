@@ -43,10 +43,10 @@ resources: | $(BUILD_DIR)/res $(BUILD_DIR)/data $(BUILD_DIR)/rlog
 	cp -u rogue.opt $(BUILD_DIR)/
 	cp -u docs/readme.md $(BUILD_DIR)/
 
-$(BUILD_DIR)/res $(BUILD_DIR)/data $(BUILD_DIR)/rlog:
+$(BUILD_DIR) $(BUILD_DIR)/res $(BUILD_DIR)/data $(BUILD_DIR)/rlog:
 	mkdir -p $@
 
-libs:
+libs: | $(BUILD_DIR)
 	@for dir in $(LIB_SUBDIRS); do \
 		echo "=== Building $$dir ==="; \
 		$(MAKE) -C $(SRC_DIR)/$$dir || exit 1; \
