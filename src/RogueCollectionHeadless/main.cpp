@@ -34,22 +34,29 @@ int main(int argc, char** argv)
 
     Environment env(args);
 
-    // Resolve game version from the positional argument.
-    std::string game_name = args.savefile;
-    if (game_name.empty()) {
-        std::cerr << "Usage: " << argv[0]
-                  << " <game-name> --pipe-io --trogue-fd <fd> --frogue-fd <fd>"
-                  << std::endl;
-        return 1;
-    }
+    // Resolve game version from the positional argument.  When
+    // --rogomatic-player is set, load the Rogomatic library instead
+    // of a Rogue version: the binary runs as the bot, not the game.
+    GameConfig config;
+    if (args.rogomatic_player) {
+        config = GetRogomaticGameConfig();
+    } else {
+        std::string game_name = args.savefile;
+        if (game_name.empty()) {
+            std::cerr << "Usage: " << argv[0]
+                      << " <game-name> --pipe-io --trogue-fd <fd> --frogue-fd <fd>"
+                      << std::endl;
+            return 1;
+        }
 
-    int idx = GetGameIndex(game_name);
-    if (idx == -1) {
-        std::cerr << "Unknown game: " << game_name << std::endl;
-        return 1;
-    }
+        int idx = GetGameIndex(game_name);
+        if (idx == -1) {
+            std::cerr << "Unknown game: " << game_name << std::endl;
+            return 1;
+        }
 
-    GameConfig config = GetGameConfig(idx);
+        config = GetGameConfig(idx);
+    }
 
     int frogue_fd = args.GetDescriptorFromRogue();
     int trogue_fd = args.GetDescriptorToRogue();

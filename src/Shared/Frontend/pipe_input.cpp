@@ -31,7 +31,7 @@ void PipeInput::RunPipeServer()
     char buffer[BufferSize];
     int bytes_read;
 
-    while ((bytes_read = _read(pipe_fd_, buffer, 1)))
+    while ((bytes_read = _read(pipe_fd_, buffer, 1)) > 0)
     {
         if (bytes_read == 1 && buffer[0] == EOF) {
             break;
